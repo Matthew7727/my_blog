@@ -1,11 +1,15 @@
-import { Typography } from "@mui/material";
+import { Divider, Grid } from "@mui/material";
+import IntroQuestion from "../features/introQuestion/IntroQuestion";
 
 function Home() {
     return (
-        <Typography variant='h6' noWrap sx={{ alignSelf:'center', fontFamily: 'inter', color: 'black' }} className='header-main-text'>
-            Home
-          </Typography>
+        <Grid container spacing={1} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start', padding: '16px'}}>
+            <Grid item justifyContent="flex-start" alignItems="center">
+                <IntroQuestion />
+            </Grid>
+            <Divider />
+        </Grid>
+
     )
 }
-
 export default Home;

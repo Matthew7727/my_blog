@@ -1,16 +1,16 @@
-import React from 'react';
 import { Outlet } from 'react-router-dom';
 import MyHeader from './features/header/header';
+import './App.css'
 
-const AppLayout = () => {
+const App = () => {
   return (
     <div>
       <MyHeader />
-      <main style={{ paddingTop: '64px' }}>
-        <Outlet />
-      </main>
+      <main>
+          <Outlet />
+      </main> 
     </div>
   );
 };
 
-export default AppLayout;
+export default App;
