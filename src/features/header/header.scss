@@ -1,0 +1,14 @@
+.header-main-text {
+    margin-right: 16px; 
+    display: none;
+  
+    @media (min-width: 960px) { 
+      display: flex;
+    }
+  
+    font-family: 'inter';
+    font-weight: 700;
+    letter-spacing: 0.3rem;
+    color: inherit;
+    text-decoration: none;
+}
