@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, Timestamp, DocumentData } from 'firebase/firestore';
 import { db } from '../../firebase/firebaseConfig';
 import { Box } from '@mui/material';
 
@@ -11,7 +11,7 @@ interface Submission {
   city: string;
   region: string;
   country: string;
-  timestamp: unknown; // Firestore timestamp
+  timestamp: Date; // Use Date type here
 }
 
 const columns: GridColDef[] = [
@@ -20,6 +20,11 @@ const columns: GridColDef[] = [
   { field: 'city', headerName: 'City', width: 150 },
   { field: 'region', headerName: 'Region', width: 150 },
   { field: 'country', headerName: 'Country', width: 150 },
+  {
+    field: 'timestamp',
+    headerName: 'Timestamp',
+    width: 500
+  }
 ];
 
 const QuestionResultsTable: React.FC = () => {
@@ -28,10 +33,14 @@ const QuestionResultsTable: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       const querySnapshot = await getDocs(collection(db, 'userSubmissions'));
-      const submissions = querySnapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-      })) as Submission[];
+      const submissions = querySnapshot.docs.map(doc => {
+        const data = doc.data() as DocumentData;
+        return {
+          id: doc.id,
+          ...data,
+          timestamp: (data.date as Timestamp).toDate() // Convert Firestore Timestamp to JavaScript Date
+        };
+      }) as Submission[];
       setRows(submissions);
     };
 
@@ -40,7 +49,7 @@ const QuestionResultsTable: React.FC = () => {
 
   return (
     <Box sx={{ height: 400, width: '100%' }}>
-      <DataGrid rows={rows} columns={columns} pageSizeOptions={[5]} />
+      <DataGrid rows={rows} columns={columns} />
     </Box>
   );
 };
