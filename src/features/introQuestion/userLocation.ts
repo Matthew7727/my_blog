@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-const IP_API_TOKEN = '0404669f62f4ae'
-
 export interface IpLocationResponse {
     ip: string,
     city: string,
@@ -18,7 +16,7 @@ const emptyLocation: IpLocationResponse = {
 
 export const getUserLocation = async () => {
   try {
-    const response = await axios.get<IpLocationResponse>('https://ipinfo.io/json?token=' + IP_API_TOKEN);
+    const response = await axios.get<IpLocationResponse>('https://ipinfo.io/json?token=' + import.meta.env.VITE_IP_API_TOKEN);
 
     const locationData: IpLocationResponse = {
         ip: response.data.ip,
