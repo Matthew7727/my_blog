@@ -59,7 +59,6 @@ function IntroQuestion() {
             <Typography variant='h2' noWrap
                 sx={{
                     fontFamily: 'inter',
-                    fontWeight: 'bold',
                     color: 'black',
                     marginBottom: '16px'
                 }}
@@ -75,7 +74,7 @@ function IntroQuestion() {
                     marginBottom: '16px'
                 }}
             >
-                What's brought you here today friend?
+                What's brought you here today?
             </Typography>
             <Stack direction={"row"} spacing={1}>
         <TextField

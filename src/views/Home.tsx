@@ -8,7 +8,7 @@ function Home() {
             <Grid item justifyContent='flex-start' alignItems='center' xs={12}>
                 <IntroQuestion />
             </Grid>
-            <Divider />
+            <Divider  />
             <Grid item justifyContent='flex-start' alignItems='center' xs={12}>
                 <QuestionResultsTable />
             </Grid>

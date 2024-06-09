@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { collection, getDocs, Timestamp, DocumentData } from 'firebase/firestore';
 import { db } from '../../firebase/firebaseConfig';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 interface Submission {
   id: string;
@@ -49,6 +49,7 @@ const QuestionResultsTable: React.FC = () => {
 
   return (
     <Box sx={{ height: 400, width: '100%' }}>
+      <Typography variant='h4' sx={{fontFamily: 'inter', fontWeight:'bold'}}>Other Users</Typography>
       <DataGrid rows={rows} columns={columns} />
     </Box>
   );

@@ -14,7 +14,19 @@ function MyHeader() {
     <AppBar position='fixed' sx={{ backgroundColor: 'white', boxShadow: 'none' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
-          <Typography variant='h6' noWrap sx={{ fontFamily: 'inter', color: 'black', fontWeight: 'bold' }} className='header-main-text'>
+        <Typography
+            variant='h5'
+            noWrap
+            component={Link}
+            to="/"
+            sx={{ 
+              fontFamily: 'inter', 
+              color: 'black', 
+              fontWeight: 'bold', 
+              textDecoration: 'none'  // To remove the underline from the link
+            }}
+            className='header-main-text'
+          >
             Matthew Eccleston
           </Typography>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
@@ -23,7 +35,7 @@ function MyHeader() {
               key={page.path}
               component={Link}
               to={`/${page.path}`}
-              sx={{ fontFamily: 'inter', color: 'black' }}
+              sx={{ fontFamily: 'inter', color: 'black', fontSize:'12px' }}
             >
               {page.name}
             </Button>

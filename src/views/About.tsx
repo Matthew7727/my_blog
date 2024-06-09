@@ -1,10 +1,20 @@
-import { Typography } from "@mui/material";
+import { Box, Stack } from "@mui/material";
+import AboutBackground from "../features/AboutComponents/AboutBackground";
+import AboutSkillsAnExpertise from "../features/AboutComponents/AboutSkillsAnExpertise";
+import Introduction from "../features/AboutComponents/Introduction";
+import WorkExperiences from "../features/AboutComponents/WorkExperiences";
 
 function About() {
     return (
-        <Typography variant='h6' noWrap sx={{ alignSelf:'center', fontFamily: 'inter', color: 'black' }} className='header-main-text'>
-            About Me
-          </Typography>
+        <Stack direction="column" justifyContent="flex-start" alignItems="center" spacing={2}>
+            <Introduction />
+            <Box>
+                <AboutBackground />
+                <AboutSkillsAnExpertise />
+                <WorkExperiences />
+            </Box>
+        </Stack>
+
     )
 }
 
