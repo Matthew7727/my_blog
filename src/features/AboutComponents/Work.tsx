@@ -20,6 +20,7 @@ function Work({work}: WorkProps) {
                                         <Typography variant="subtitle2" color="text.secondary">{work.duration}</Typography>
                                         {location && <Typography variant="subtitle2" color="text.secondary">{work.location}</Typography>}
                                     </Box>
+                                    <CustomChip fillColour="#2986cc" textColour="#FFFFFF" text={work.jobType} />
                                 </Box>
                                 <Typography variant="body1" component="div" gutterBottom>Responsibilities:</Typography>
                                 <List>
