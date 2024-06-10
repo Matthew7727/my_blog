@@ -23,8 +23,8 @@ function OtherTech() {
 
     return (
         <Stack direction='row' spacing={5} justifyContent='center'>
-            {otherTechData.map((tech) => (
-                <Grid item xs={1} >
+            {otherTechData.map((tech, index) => (
+                <Grid item xs={1} key={index} >
                     <Chip label={tech} sx={{fontSize:'15px', fontWeight:'bold'}} />
                 </Grid>
             ))}

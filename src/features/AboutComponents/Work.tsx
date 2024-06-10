@@ -9,7 +9,7 @@ interface WorkProps {
 
 function Work({work}: WorkProps) {
      return (
-        <Grid item sm={6}>
+        <Grid item sm={6} sx={{padding:'5px'}}>
                         <Card sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
                             <CardContent>
                                 <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
