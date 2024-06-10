@@ -1,7 +1,7 @@
 import { Typography, Box } from "@mui/material";
 import TechCards from "./TechCard";
 import OtherTech from "./OtherTech";
-import Skills from "./Skills";
+// import Skills from "./Skills";
 
 function AboutSkillsAnExpertise() {
     return (
@@ -18,10 +18,10 @@ function AboutSkillsAnExpertise() {
                     Others 
                 </Typography>
                 <OtherTech />
-                <Typography variant="subtitle1" sx={{ color: 'gray' }}>
+                {/* <Typography variant="subtitle1" sx={{ color: 'gray' }}>
                     Skills 
                 </Typography>
-                <Skills />
+                <Skills /> */}
             </Box>
         </>
     )
