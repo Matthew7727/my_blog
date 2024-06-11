@@ -16,11 +16,13 @@ export interface WorkExperience {
     skills: string[],
     technologies?: string[],
     logoUrl: string,
+    colour: string
 }
 
 function WorkExperiences() {
 
     const [workExperiences, setWorkExperiences] = useState<WorkExperience[]>([])
+
 
     useEffect(() => {
         const fetchWorkExperiences = async () => {
