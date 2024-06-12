@@ -3,6 +3,7 @@ import AboutBackground from "../features/AboutComponents/AboutBackground";
 import AboutSkillsAnExpertise from "../features/AboutComponents/AboutSkillsAnExpertise";
 import Introduction from "../features/AboutComponents/Introduction";
 import WorkExperiences from "../features/AboutComponents/WorkExperiences";
+import PersonalInterests from "../features/AboutComponents/PersonalInterests";
 
 function About() {
     return (
@@ -12,6 +13,7 @@ function About() {
                 <AboutBackground />
                 <AboutSkillsAnExpertise />
                 <WorkExperiences />
+                <PersonalInterests />
             </Box>
         </Stack>
 
