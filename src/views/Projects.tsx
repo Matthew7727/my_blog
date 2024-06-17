@@ -1,56 +1,51 @@
 import { useEffect, useState } from 'react';
-import {  Typography, Container, List, ListItem, ListItemText } from '@mui/material';
-import { collection, doc, getDoc } from 'firebase/firestore';
-import { db } from '../firebase/firebaseConfig';
-import { useNavigate } from 'react-router-dom';
-
-export interface Project {
-  id?: string;
-  title: string;
-  description: string;
-  techStack: string[];
-  startDate: string; // ISO string format
-  type: 'Professional' | 'Personal';
-  githubUrl?: string;
-}
+import { Container, List, ListItem, ListItemText, ListItemAvatar, Avatar, Typography, Link } from '@mui/material';
+import { fetchGitHubRepos, GitHubRepo } from '../features/ProjectComponents/githubAPI';
 
 function Projects() {
-  const [projects, setProjects] = useState<Project[]>([]);
-  const navigate = useNavigate();
+  const [repos, setRepos] = useState<GitHubRepo[]>([]);
 
   useEffect(() => {
-    const fetchProjects = async () => {
-      const docRef = doc(collection(db, 'projects'), 'Projects');
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-        const data = docSnap.data() as { professional: Omit<Project, 'id'>[]; personal: Omit<Project, 'id'>[] };
-        const allProjects: Project[] = [
-          ...data.professional.map((proj, index) => ({ ...proj, id: `professional-${index}` })),
-          ...data.personal.map((proj, index) => ({ ...proj, id: `personal-${index}` }))
-        ];
-        setProjects(allProjects);
-      } else {
-        console.log('No such document');
+    const fetchRepos = async () => {
+      try {
+        const repos: GitHubRepo[] = await fetchGitHubRepos('Matthew7727'); // Replace with your GitHub username
+        setRepos(repos);
+      } catch (error) {
+        console.error('Failed to fetch repos', error);
       }
     };
 
-    fetchProjects();
+    fetchRepos();
   }, []);
 
   return (
     <Container>
-      <Typography variant="h4" component="div" sx={{ marginBottom: 4, textAlign: 'center', fontFamily:'inter', fontWeight:'bold' }}>
+      <Typography variant="h4" component="div" sx={{ marginBottom: 4, textAlign: 'center' }}>
         My Projects
       </Typography>
       <List>
-        {projects.map((project) => (
-          <ListItem
-            key={project.id}
-            button
-            onClick={() => navigate(`/projects/${project.id}`, { state: { project } })}
-            sx={{ marginBottom: 2, border: '1px solid #ccc', borderRadius: 2 }}
+        {repos.map((repo) => (
+          <ListItem 
+            key={repo.name} 
+            component={Link} 
+            href={`/projects/${repo.name}`} 
+            sx={{ 
+              marginBottom: 2, 
+              border: '1px solid #ccc', 
+              borderRadius: 2, 
+              display: 'flex', 
+              textDecoration: 'none' 
+            }}
           >
-            <ListItemText primary={project.title} secondary={project.description} />
+            <ListItemAvatar>
+              <Avatar src={repo.owner.avatar_url} alt={repo.owner.login} />
+            </ListItemAvatar>
+            <ListItemText 
+              primary={repo.name} 
+              secondary={repo.description && repo.description.length > 100 ? `${repo.description.slice(0, 100)}...` : repo.description} 
+              primaryTypographyProps={{ style: { fontFamily: 'inter', fontWeight: 'bold' }}}
+              secondaryTypographyProps={{ noWrap: true }}
+            />
           </ListItem>
         ))}
       </List>

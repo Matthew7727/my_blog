@@ -1,5 +1,5 @@
 import { Box, Typography, Stack } from '@mui/material';
-import { PersonalInterest } from './PersonalInterests'; // Adjust the import path as needed
+import { PersonalInterest } from './PersonalInterests'; 
 import FirebaseImage from '../../genericComponents/FirebaseImage';
 
 interface InterestOrHobbyProps {

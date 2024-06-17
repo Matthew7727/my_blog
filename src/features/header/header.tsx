@@ -1,4 +1,4 @@
-import { AppBar, Box, Button, Container, Stack, Toolbar, Typography, circularProgressClasses } from '@mui/material';
+import { AppBar, Box, Button, Container, Stack, Toolbar, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import FirebaseImage from '../../genericComponents/FirebaseImage';
 import { useEffect, useState } from 'react';
@@ -43,7 +43,7 @@ function MyHeader() {
                 fontFamily: 'inter',
                 color: 'black',
                 fontWeight: 'bold',
-                textDecoration: 'none'  // To remove the underline from the link
+                textDecoration: 'none' 
               }}
               className='header-main-text'
             >

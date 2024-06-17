@@ -37,8 +37,8 @@ function IntroQuestion() {
                     country: userLocation.country,
                     date: new Date()
                 });
-                setInputValue(''); // Clear the input field after submission
-                setIsSubmitted(true); // Prevent further submissions
+                setInputValue(''); 
+                setIsSubmitted(true); 
                 setSnackbarMessage('Submission successful!');
                 setSnackbarSeverity('success');
               } catch (error) {
@@ -97,7 +97,7 @@ function IntroQuestion() {
         <Button
           onClick={handleSubmit}
           sx={{ backgroundColor: 'darkgreen', color: 'white', fontWeight: 'bold' }}
-          disabled={isSubmitted} // Disable button after submission
+          disabled={isSubmitted} 
         >
           Enter
         </Button>

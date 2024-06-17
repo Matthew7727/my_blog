@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Box, Stack, Typography } from '@mui/material';
 import { collection, doc, getDoc } from 'firebase/firestore';
-import { db } from '../../firebase/firebaseConfig'; // Adjust the import path as needed
+import { db } from '../../firebase/firebaseConfig'; 
 import InterestOrHobby from './InterestOrHobby';
 
 export interface PersonalInterest {

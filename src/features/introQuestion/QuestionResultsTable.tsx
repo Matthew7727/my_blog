@@ -11,7 +11,7 @@ interface Submission {
   city: string;
   region: string;
   country: string;
-  timestamp: Date; // Use Date type here
+  timestamp: Date; 
 }
 
 const columns: GridColDef[] = [
@@ -38,7 +38,7 @@ const QuestionResultsTable: React.FC = () => {
         return {
           id: doc.id,
           ...data,
-          timestamp: (data.date as Timestamp).toDate() // Convert Firestore Timestamp to JavaScript Date
+          timestamp: (data.date as Timestamp).toDate() 
         };
       }) as Submission[];
       setRows(submissions);
