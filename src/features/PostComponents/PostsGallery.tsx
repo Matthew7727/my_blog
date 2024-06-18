@@ -1,47 +1,29 @@
-import { Divider, Grid, Typography } from "@mui/material"
-import { useEffect, useState } from "react"
-import PostCard from "./PostCard"
-import { Posts, fetchPostsByType } from "./pstAPI"
+import { useEffect, useState } from 'react';
+import { Grid } from '@mui/material';
+import PostCard from './PostCard'; // Adjust the import path as needed
+import { fetchAllPosts, Posts } from './pstAPI';
 
+function PostGallery() {
+  const [posts, setPosts] = useState<Posts[]>([]);
 
-    function PostGallery() {
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const fetchedPosts = await fetchAllPosts();
+      setPosts(fetchedPosts);
+    };
 
-        const [blogPosts, setBlogPosts] = useState<Posts[]>([])
-        const [articlePosts, setArticlePosts] = useState<Posts[]>([])
+    fetchPosts();
+  }, []);
 
-        useEffect(() => {
-            const fetchPosts = async () => {
-                const articles = await fetchPostsByType('articles');
-                setArticlePosts(articles)
-
-                const blogPosts = await fetchPostsByType('blogPosts');
-                setBlogPosts(blogPosts)
-            }
-
-            fetchPosts();
-        }, [])
-
-        return (
-            <Grid container spacing={2}>
-                <Grid item xs={12}>
-                    <Typography variant="h4" sx={{fontFamily: 'inter', fontWeight: 'bold'}}>Blog</Typography>
-                </Grid>
-                {blogPosts.map((post) => (
-                    <Grid item xs={3}>
-                        <PostCard post={post} />
-                    </Grid>
-                ))}
-                <Divider />
-                <Grid item xs={12}>
-                    <Typography variant="h4" sx={{fontFamily: 'inter', fontWeight: 'bold'}}>Articles</Typography>
-                </Grid>
-                {articlePosts.map((post) => (
-                    <Grid item xs={2}>
-                        <PostCard post={post} />
-                    </Grid>
-                ))}
-            </Grid>
-        )
+  return (
+    <Grid container spacing={2}>
+      {posts.map((post) => (
+        <Grid item xs={12} sm={6} md={4} key={post.id}>
+          <PostCard post={post} />
+        </Grid>
+      ))}
+    </Grid>
+  );
 }
 
-    export default PostGallery
+export default PostGallery;

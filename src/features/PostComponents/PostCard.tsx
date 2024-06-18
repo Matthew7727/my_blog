@@ -1,11 +1,18 @@
 import { Card, CardMedia, CardContent, Typography, CardActions, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import { Posts } from "./pstAPI";
 
 interface PostCardProps {
-    post: Posts
+    post: Posts;
 }
 
 function PostCard({ post }: PostCardProps) {
+    const navigate = useNavigate();
+
+    const handleReadMore = () => {
+        navigate(`/entries/${post.id}`);
+    };
+
     return (
         <Card sx={{ boxShadow: 0, border: '1px solid black', borderRadius: 0 }}>
             <CardMedia component='img' image={post.imageUrls[0]} title={post.title} />
@@ -18,10 +25,10 @@ function PostCard({ post }: PostCardProps) {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size='small' sx={{ color: 'black' }}>Read More</Button>
+                <Button size='small' sx={{ color: 'black' }} onClick={handleReadMore}>Read More</Button>
             </CardActions>
         </Card>
-    )
+    );
 }
 
-export default PostCard
+export default PostCard;
