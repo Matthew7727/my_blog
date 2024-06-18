@@ -1,21 +1,21 @@
 import { useEffect, useState } from 'react';
 import { Container, List, ListItem, ListItemText, ListItemAvatar, Avatar, Typography, Link } from '@mui/material';
-import { fetchGitHubRepos, GitHubRepo } from '../features/ProjectComponents/githubAPI';
+import { fetchFirestoreProjects, FirestoreProject } from '../features/ProjectComponents/firestoreAPI';
 
 function Projects() {
-  const [repos, setRepos] = useState<GitHubRepo[]>([]);
+  const [projects, setProjects] = useState<FirestoreProject[]>([]);
 
   useEffect(() => {
-    const fetchRepos = async () => {
+    const fetchProjects = async () => {
       try {
-        const repos: GitHubRepo[] = await fetchGitHubRepos('Matthew7727'); // Replace with your GitHub username
-        setRepos(repos);
+        const projects: FirestoreProject[] = await fetchFirestoreProjects();
+        setProjects(projects);
       } catch (error) {
-        console.error('Failed to fetch repos', error);
+        console.error('Failed to fetch projects', error);
       }
     };
 
-    fetchRepos();
+    fetchProjects();
   }, []);
 
   return (
@@ -24,11 +24,11 @@ function Projects() {
         My Projects
       </Typography>
       <List>
-        {repos.map((repo) => (
+        {projects.map((project) => (
           <ListItem 
-            key={repo.name} 
+            key={project.repoName} 
             component={Link} 
-            href={`/projects/${repo.name}`} 
+            href={`/projects/${project.repoName}`} 
             sx={{ 
               marginBottom: 2, 
               border: '1px solid #ccc', 
@@ -38,11 +38,11 @@ function Projects() {
             }}
           >
             <ListItemAvatar>
-              <Avatar src={repo.owner.avatar_url} alt={repo.owner.login} />
+              <Avatar src={project.imageUrl} alt={project.name} />
             </ListItemAvatar>
             <ListItemText 
-              primary={repo.name} 
-              secondary={repo.description && repo.description.length > 100 ? `${repo.description.slice(0, 100)}...` : repo.description} 
+              primary={project.name} 
+              secondary={project.projectDescription && project.projectDescription.length > 100 ? `${project.projectDescription.slice(0, 100)}...` : project.projectDescription} 
               primaryTypographyProps={{ style: { fontFamily: 'inter', fontWeight: 'bold' }}}
               secondaryTypographyProps={{ noWrap: true }}
             />

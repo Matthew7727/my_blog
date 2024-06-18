@@ -7,7 +7,7 @@ import RandomTools from '../views/RandomTools';
 import DailyCodingChallenges from '../views/DailyCodingChallenges';
 import Home from '../views/Home';
 import Entries from '../views/Entries';
-import ProjectDetails from '../features/ProjectComponents/ProjectDetails';
+import ProjectOverview from '../features/ProjectComponents/ProjectOverview';
 
 const router = createBrowserRouter([
   {
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
       { path: 'projects', element: <Projects /> },
       {
         path: 'projects/:repoName',
-        element: <ProjectDetails />,
+        element: <ProjectOverview />,
         loader: ({ params }) => {
           return params;
         }
