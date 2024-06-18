@@ -8,7 +8,7 @@ const pages = [
   { name: 'About', path: 'about' },
   { name: 'Projects', path: 'projects' },
   // { name: 'Random Tools', path: 'random-tools' },
-  { name: 'Blog', path: 'entries' },
+  { name: 'Posts', path: 'entries' },
   { name: 'Daily Coding Challenges', path: 'daily-coding-challenges' }
 ];
 
