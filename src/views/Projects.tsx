@@ -20,7 +20,7 @@ function Projects() {
 
   return (
     <Container>
-      <Typography variant="h4" component="div" sx={{ marginBottom: 4, textAlign: 'center' }}>
+      <Typography variant="h4" component="div" sx={{ marginBottom: 4, textAlign: 'center', fontFamily:'inter', fontWeight:'bold'}}>
         My Projects
       </Typography>
       <List>
