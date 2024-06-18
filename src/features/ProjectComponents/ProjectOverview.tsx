@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Box, Container, Typography, Stack } from '@mui/material';
+import { Box, Container, Typography, Grid } from '@mui/material';
 import { fetchGitHubRepoDetails, fetchGitHubRepoCommits, fetchGitHubRepoLanguages, GitHubRepo, GitHubCommit } from './githubAPI'; // Adjust the import path as needed
 import ProjectDetails from './ProjectDetails';
 import CommitDetails from './CommitDetails';
@@ -39,12 +39,12 @@ function ProjectOverview() {
 
   return (
     <Container>
-      <Stack direction='row' spacing={2} justifyContent="space-between">
-        <Box flex={1}>
+      <Grid container spacing={2} justifyContent="space-between">
+        <Grid item xs={12} md={7}>
           <ProjectDetails repoDetails={repoDetails} repoLanguages={repoLanguages} firestoreProject={firestoreProject} />
-        </Box>
-        <Box flex={1} mt={4}>
-          <Box flex={1}>
+        </Grid>
+        <Grid item xs={12} md={5}>
+          <Box>
             <Typography variant="h6" component="div" sx={{ fontFamily: 'inter', fontWeight: 'bold', marginBottom: 2 }}>
               Recent Commits
             </Typography>
@@ -52,9 +52,9 @@ function ProjectOverview() {
               <CommitDetails key={commit.sha} commit={commit} />
             ))}
           </Box>
-        </Box>
-      </Stack>
-      <Box mt={4}>
+        </Grid>
+      </Grid>
+      <Box mt={1}>
         <Typography variant="h6" component="div" sx={{ fontFamily: 'inter', fontWeight: 'bold', marginBottom: 2 }}>
           To-Do List
         </Typography>

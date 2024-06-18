@@ -1,6 +1,6 @@
 import { Divider, Grid } from "@mui/material";
-import IntroQuestion from "../features/introQuestion/IntroQuestion";
-import QuestionResultsTable from "../features/introQuestion/QuestionResultsTable";
+import IntroQuestion from "../features/IntroQuestion/IntroQuestion";
+import QuestionResultsTable from "../features/IntroQuestion/QuestionResultsTable";
 
 function Home() {
     return (
