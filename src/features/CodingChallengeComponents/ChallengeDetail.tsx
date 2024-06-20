@@ -49,6 +49,9 @@ function ChallengeDetail() {
       <Typography variant="body1" sx={{ fontFamily: 'inter' }}>
         Difficulty: {challenge.difficulty}
       </Typography>
+      <Typography variant="body1" sx={{ paddingTop:'15px', fontFamily: 'inter' }}>
+        {challenge.description}
+      </Typography>
       <Typography variant="body1" sx={{ fontFamily: 'inter', marginTop: '16px' }}>
         Solution:
       </Typography>

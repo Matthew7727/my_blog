@@ -38,7 +38,7 @@ export const fetchChallenges = async (): Promise<Challenge[]> => {
     }
 
     return {
-      id: number,  // Setting the id property
+      id: number,  
       number,
       dateCompleted: descriptionData.date,
       description: descriptionData.description,
