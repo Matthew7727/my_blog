@@ -8,6 +8,7 @@ import Home from '../views/Home';
 import Entries from '../views/Entries';
 import ProjectOverview from '../features/ProjectComponents/ProjectOverview';
 import PostDetails from '../features/PostComponents/PostDetails';
+import ChallengeDetail from '../features/CodingChallengeComponents/ChallengeDetail';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       },
       { path: 'random-tools', element: <RandomTools /> },
       { path: 'daily-coding-challenges', element: <DailyCodingChallenges /> },
+      {
+        path: 'daily-coding-challenges/:number',
+        element: <ChallengeDetail />
+      },
       { path: 'entries', element: <Entries /> },
       { path: 'entries/:id', element: <PostDetails /> },  // Ensure this path is correct
     ]
