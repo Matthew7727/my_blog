@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { DataGrid, GridColDef, GridRowParams } from '@mui/x-data-grid';
 import { fetchChallenges, Challenge } from './api';
+import { Box } from '@mui/material';
 
 const columns: GridColDef[] = [
-  { field: 'id', headerName: 'ID', width: 150 }, // Ensure 'id' is included if needed
-  { field: 'number', headerName: 'Number', width: 150 },
-  { field: 'dateCompleted', headerName: 'Date Completed', width: 150 },
-  { field: 'language', headerName: 'Language', width: 150 },
-  { field: 'difficulty', headerName: 'Difficulty', width: 150 },
+  { field: 'number', headerName: 'Number', width: 150, headerAlign: 'center' },
+  { field: 'dateCompleted', headerName: 'Date Completed', width: 150, headerAlign: 'center' },
+  { field: 'language', headerName: 'Language', width: 150, headerAlign: 'center' },
+  { field: 'difficulty', headerName: 'Difficulty', width: 150, headerAlign: 'center' },
 ];
 
 function DailyCodingChallengesTable() {
@@ -30,14 +30,38 @@ function DailyCodingChallengesTable() {
   };
 
   return (
-    <div style={{ height: 400, width: '100%' }}>
-      <DataGrid
-        rows={challenges}
-        columns={columns}
-        onRowClick={handleRowClick}
-        getRowId={(row) => row.id} // Ensure that each row is uniquely identified
-      />
-    </div>
+    <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+      <Box sx={{ height: 500, width: '625px' }}>
+        <DataGrid
+          rows={challenges}
+          columns={columns}
+          onRowClick={handleRowClick}
+          getRowId={(row) => row.id}
+          sx={{
+            border: '1px solid black',
+            borderRadius: '0px',
+            '& .MuiDataGrid-cell': {
+              fontFamily: 'Inter, sans-serif',
+              textAlign: 'center',
+            },
+            '& .MuiDataGrid-columnHeaders': {
+              backgroundColor: '#f5f5f5',
+              fontFamily: 'Inter, sans-serif',
+              fontWeight: 'bold',
+            },
+            '& .MuiDataGrid-columnHeaderTitle': {
+              fontWeight: 'bold',
+              textAlign: 'center',
+              width: '100%',
+            },
+            '& .MuiDataGrid-columnHeader': {
+              display: 'flex',
+              justifyContent: 'center',
+            },
+          }}
+        />
+      </Box>
+    </Box>
   );
 }
 
