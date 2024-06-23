@@ -9,6 +9,7 @@ import Entries from '../views/Entries';
 import ProjectOverview from '../features/ProjectComponents/ProjectOverview';
 import PostDetails from '../features/PostComponents/PostDetails';
 import ChallengeDetail from '../features/CodingChallengeComponents/ChallengeDetail';
+import Contact from '../views/Contact';
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,7 @@ const router = createBrowserRouter([
       },
       { path: 'entries', element: <Entries /> },
       { path: 'entries/:id', element: <PostDetails /> },  // Ensure this path is correct
+      { path: 'contact', element: <Contact />}
     ]
   }
 ]);

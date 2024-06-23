@@ -1,19 +1,20 @@
 import { AppBar, Box, Button, Container, Stack, Toolbar, Typography } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import FirebaseImage from '../../genericComponents/FirebaseImage';
 import { useEffect, useState } from 'react';
 import { doc, collection, getDoc } from 'firebase/firestore';
 import { db } from '../../firebase/firebaseConfig';
+
 const pages = [
-  { name: 'About', path: 'about' },
-  { name: 'Projects', path: 'projects' },
-  // { name: 'Random Tools', path: 'random-tools' },
-  { name: 'Posts', path: 'entries' },
-  { name: 'Daily Coding Challenges', path: 'daily-coding-challenges' }
+  { name: 'About', path: 'about', color: 'red' },
+  { name: 'Projects', path: 'projects', color: 'orange' },
+  { name: 'Posts', path: 'entries', color: 'green' },
+  { name: 'Daily Coding Challenges', path: 'daily-coding-challenges', color: 'blue' },
+  { name: 'Contact', path: 'contact', color: 'purple' },
 ];
 
 function MyHeader() {
-
+  const location = useLocation();
   const [logoUrl, setLogoUrl] = useState<string>('')
 
   useEffect(() => {
@@ -49,20 +50,27 @@ function MyHeader() {
             >
               Matthew Eccleston
             </Typography>
-
           </Stack>
 
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page.path}
-                component={Link}
-                to={`/${page.path}`}
-                sx={{ fontFamily: 'inter', color: 'black', fontSize: '12px' }}
-              >
-                {page.name}
-              </Button>
-            ))}
+            {pages.map((page) => {
+              const isActive = location.pathname === `/${page.path}`;
+              return (
+                <Button
+                  key={page.path}
+                  component={Link}
+                  to={`/${page.path}`}
+                  sx={{
+                    fontFamily: 'inter',
+                    color: isActive ? page.color : 'black',
+                    fontWeight: isActive ? 'bold' : 'normal',
+                    fontSize: '12px',
+                  }}
+                >
+                  {page.name}
+                </Button>
+              )
+            })}
           </Box>
         </Toolbar>
       </Container>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Box, Typography, Grid, Stack } from "@mui/material";
+import { Box, Typography, Grid, Stack, Divider } from "@mui/material";
 import { useParams } from 'react-router-dom';
 import FirebaseImage from "../../genericComponents/FirebaseImage";
 import { fetchPostById, Posts } from './pstAPI';
@@ -57,6 +57,7 @@ function PostDetails() {
         <Box>
             <Box sx={{ textAlign: 'center', marginBottom: '16px' }}>
                 <Typography variant="h1" sx={{ fontFamily: 'inter', fontWeight: 'bold', marginBottom: '8px' }}>{post.title}</Typography>
+                <Divider variant='middle' sx={{borderBottomWidth:'5px', borderColor:'black'}} />
                 <Stack direction={'row'} spacing={1} justifyContent={'center'}>
                     <Typography variant="overline" color='text.secondary' sx={{ fontFamily: 'inter' }}>{post.dateWritten}</Typography>
                     <Typography variant="overline" color='text.secondary' sx={{ fontFamily: 'inter' }}>{post.subtitle}</Typography>
