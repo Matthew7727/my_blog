@@ -31,10 +31,10 @@ function PersonalInterests() {
 
     return (
         <Box sx={{ padding: 4 }}>
-            <Typography variant='h5' noWrap sx={{ fontFamily: 'inter', color: 'black', paddingTop: '50px', fontWeight:'bold'}}>
+            <Typography variant='h5' noWrap sx={{ fontFamily: 'inter', color: 'black', paddingTop: '50px' }}>
                 Personal Interests
             </Typography>
-            <Typography variant="h5" component="div" sx={{ marginBottom: 2 }}>
+            <Typography variant="subtitle1" sx={{ color: 'gray' }}>
                 Hobbies:
             </Typography>
             <Stack spacing={4} sx={{ marginBottom: 6 }}>
@@ -43,7 +43,7 @@ function PersonalInterests() {
                 ))}
             </Stack>
 
-            <Typography variant="h5" component="div" sx={{ marginBottom: 2 }}>
+            <Typography variant="subtitle1" sx={{ color: 'gray' }}>
                 Interests:
             </Typography>
             <Stack spacing={4}>

@@ -5,9 +5,9 @@ import { db } from '../../firebase/firebaseConfig';
 import FirebaseImage from '../../genericComponents/FirebaseImage';
 
 interface Tech {
-  expLevel: number;
-  image: string;
-  name: string;
+  ExpLevel: number;
+  Image: string;
+  Name: string;
 }
 
 function TechCards() {
@@ -36,12 +36,12 @@ function TechCards() {
             <Box>
               <Stack direction='column' justifyContent='flex-start' alignItems='center' spacing={2}>
                 <Typography variant="h6" noWrap sx={{ fontFamily: 'inter', paddingTop: '15px' }}>
-                  {tech.name}
+                  {tech.Name}
                 </Typography>
-                <FirebaseImage imagePath={tech.image} imageHeight='100px'/>
+                <FirebaseImage imagePath={tech.Image} imageHeight='100px'/>
                   <Box sx={{ width: '75%' }}>
                     <Typography variant='body1' sx={{fontFamily: 'inter', fontWeight: 'bold' }}> XP: </Typography>
-                    <LinearProgress color="success" variant="determinate" value={tech.expLevel * 10} />
+                    <LinearProgress color="success" variant="determinate" value={tech.ExpLevel * 10} />
                   </Box>
               </Stack>
             </Box>
