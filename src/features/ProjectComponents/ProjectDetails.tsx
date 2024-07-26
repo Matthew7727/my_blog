@@ -1,5 +1,5 @@
 import { Box, Typography, Chip, Stack, Link as MuiLink } from "@mui/material";
-import { GitHub, FileDownload } from '@mui/icons-material';
+import { GitHub } from '@mui/icons-material';
 import { GitHubRepo } from "./githubAPI";
 import { FirestoreProject } from "./firestoreAPI";
 import FirebaseImage from "../../genericComponents/FirebaseImage";
