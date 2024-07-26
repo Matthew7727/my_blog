@@ -35,10 +35,10 @@ function ProjectDetails({ repoDetails, repoLanguages, firestoreProject }: Projec
                     <GitHub sx={{ marginRight: 0.5 }} />
                     View Source Code
                 </MuiLink>
-                <MuiLink href="#" target="_blank" rel="noopener" sx={{ display: 'flex', alignItems: 'center' }}>
+                {/* <MuiLink href="#" target="_blank" rel="noopener" sx={{ display: 'flex', alignItems: 'center' }}>
                     <FileDownload sx={{ marginRight: 0.5 }} />
                     Download File
-                </MuiLink>
+                </MuiLink> */}
             </Stack>
         </Box>
     );
